@@ -26,7 +26,7 @@ this.position = {
       }
     }
   }
-}
+
 update() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
@@ -36,3 +36,4 @@ update() {
       this.velocity.y = 30;
     }
   }
+}
