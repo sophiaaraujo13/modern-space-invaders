@@ -45,4 +45,30 @@ class Player {
       
       c.restore();
     }
-  }
+    update() {
+        if (!this.image) return;
+        this.draw();
+        this.position.x += this.velocity.x;
+        if (this.opacity !== 1) return;
+        this.frames++;
+        if (this.frames % 2 === 0) {
+          this.particles.push(
+            new Particle({
+              position: {
+                x: player.position.x + player.width / 2,
+                y: player.position.y + player.height
+              },
+              velocity: {
+                x: (Math.random() - 0.5) * 1.5,
+                y: 1.4
+              },
+              radius: Math.random() * 2,
+              color: "white",
+              fades: true
+            })
+          );
+          this.frames = 0;
+        }
+      }
+    }
+  

@@ -55,7 +55,7 @@ class Bomb {
           opacity: 0,
           duration: 0.15,
       })
-    }
+  }
   }
   
   class PoweUp {
@@ -79,4 +79,3 @@ class Bomb {
           this.position.y += this.velocity.y;
       }
   }
-   
