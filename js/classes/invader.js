@@ -4,7 +4,6 @@ class invader {
         x: 0,
         y: 0
       };
-  
       const image = new Image();
       image.src = "./img/invader.png";
       image.onload = () => {
@@ -18,4 +17,20 @@ class invader {
         };
       };
     }
+    draw() {
+        ctx.drawImage(
+          this.image,
+          this.position.x,
+          this.position.y,
+          this.width,
+          this.height
+        );
+     }
+     update() {
+        if (this.imaage) {
+        this.draw();
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+      }
   }
+}
