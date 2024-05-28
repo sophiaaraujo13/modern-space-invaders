@@ -21,7 +21,7 @@ class Particle {
     this.draw();
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-    if (this.fades)  this.opacity += 0,01{
+    if (this.fades)  this.opacity += 0,01 {
    }
   }
 }
