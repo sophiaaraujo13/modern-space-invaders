@@ -6,8 +6,8 @@ class Particle {
         this.color = color;
         this.opacity = 1;
         this.fades = fades;
-      }
-      draw() {
+    }
+     draw() {
         c.save();
         c.globalAlpha = this.opacity;
         c.beginPath();
@@ -16,12 +16,13 @@ class Particle {
         c.fill();
         c.closePath();
         c.restore();
+     }
+     update() {
+        this.draw();
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+        if (this.fades) {
+            this.opacity -= 0.01;
+        }
     }
-    update() {
-    this.draw();
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
-    if (this.fades)  this.opacity += 0,01 {
-   }
-  }
 }
