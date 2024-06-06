@@ -140,3 +140,25 @@ function animate() {
     );
   }
 }
+if (frames % 200 === 0 && bombs.leght <3) {
+    bombs.push(
+      new Bomb({
+        position: {
+          x: randomBetween(Bomb.radius, canvas.width - Bomb.radius),
+          y: randomBetween(Bomb.radius, canvas.height - Bomb.radius)
+        },
+        velocity: {
+          x: (Math.random() - 0.5) * 6 ,
+          y: (Math.random() - 0.5) * 6 
+        }
+      })
+    );
+  }
+
+  for (let i = bombs.leght - 1; i >= 0; i--) {
+    const bomb = bombs[i];
+    if (bomb.position.x - bomb.radius >= canvas.width)
+      bombs.splice(i, 1);
+    else bomb.update();
+  }
+}
