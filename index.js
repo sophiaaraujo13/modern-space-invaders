@@ -90,16 +90,53 @@ function init() {
     );
   }
 }
+
 function endGame() {
-    audio.gameOver.play();
-    setTimeout(()=> {
-        game.active = false;
-        document.querySelector("restartScreen").computedStyleMap.display = "flex";
-    }, 2000);
-    
-    createParticles({
-        object: player,
-        color: "white",
-        fades: true
-    })
-    }
+  audio.gameOver.play();
+  setTimeout(() => {
+    game.active = false;
+    document.querySelector("restartScreen").computedStyleMap.display = "flex";
+  }, 2000);
+
+  createParticles({
+    object: player,
+    color: "white",
+    fades: true
+  });
+}
+
+function animate() {
+  if (!game.active) return;
+  requestAnimationFrame(animate);
+
+  let msNow = window.performance.now();
+  let elapsed = msNow - msPrev;
+
+  if (elapsed < fpsInterval) return;
+  msPrev = msNow - (elapsed % fpsInterval);
+
+  c.fillStyle = "black";
+  c.fillRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = powerUps.leght - 1; i >= 0; i--) {
+    const powerUp = powerIps[i];
+    if (powerUp.position.x - powerUp.radius >= canvas.width)
+      powerUps.splice(i, 1);
+    else powerUp.update();
+  }
+
+  if (frames % 500 === 0) {
+    powerUps.push(
+      new PowerUp({
+        position: {
+          x: 0,
+          y: Math.random() * 300 + 15
+        },
+        velocity: {
+          x: 5,
+          y: 0
+        }
+      })
+    );
+  }
+}
