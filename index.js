@@ -90,3 +90,16 @@ function init() {
     );
   }
 }
+function endGame() {
+    audio.gameOver.play();
+    setTimeout(()=> {
+        game.active = false;
+        document.querySelector("restartScreen").computedStyleMap.display = "flex";
+    }, 2000);
+    
+    createParticles({
+        object: player,
+        color: "white",
+        fades: true
+    })
+    }
