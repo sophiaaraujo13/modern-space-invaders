@@ -352,9 +352,23 @@ function animate() {
           rectangular1: invader,
           rectangular2: player
         }) &&
-        !game.over 
+        !game.over
       )
         endGame();
     }
   });
+
+  if (keys.ArrowLeft.pressed && player.position.x >= 0) {
+    player.velocity.x = -7;
+    player.rotation = -0.15;
+  } else if (
+    keys.ArrowRight.pressed &&
+    player.position.x + player.width <= canvas.width
+  ) {
+    player.velocity.x = 7;
+    player.rotation = 0.15;
+  } else {
+    player.velocity.x = 0;
+    player.rotation = 0;
+  }
 }
