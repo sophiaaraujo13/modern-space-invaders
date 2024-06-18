@@ -352,9 +352,9 @@ function animate() {
           rectangular1: invader,
           rectangular2: player
         }) &&
-        !jogo.sobre
+        !game.over 
       )
-        fim do jogo();
+        endGame();
     }
   });
 }
