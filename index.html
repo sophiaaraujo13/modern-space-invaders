@@ -1,121 +1,138 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="img/spaceship.png" type="image/x-icon" />
     <title>Space Invaders</title>
     <style>
-       body, html {
+      body,
+      html {
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0;
         height: 100%;
-        font-family:'Courier New', Courier, monospace ;
+        font-family: "Press Start 2P", Courier, monospace;
         font-size: 16px;
         background-color: rgb(14, 17, 61);
-       
-       }
+      }
     </style>
-</head>
-<body>
-    <div  style="position:relative ;" id="parentDiv">
-        <p 
-            id="scoreContainer"
-            style="
+  </head>
+  <body>
+    <div style="position: relative" id="parentDiv">
+      <p
+        id="scoreContainer"
+        style="
+          position: absolute;
+          z-index: 10;
+          color: azure;
+          margin: 0;
+          left: 20px;
+          top: 20px;
+          display: none;
+        "
+      >
+        <span>Pontos: </span>
+        <span id="scoreEl">0</span>
+      </p>
+      <canvas></canvas>
+
+      <div
+        id="startScreen"
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: url('./img/startScreenBackground.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          z-index: 20;
+          font-size: 10px;
+        "
+      >
+        <div style="text-align: center">
+          <h1 style="color: azure">Space Invaders</h1>
+          <div
+            id="startButton"
+            style="position: relative; display: inline-block; cursor: pointer"
+          >
+            <img src="./img/button.png" alt="Start Button" />
+            <span
+              style="
                 position: absolute;
-                z-index: 10;
                 color: azure;
-                margin: 0;
-                left: 20px;
-                top: 20px;
-                display: none;
-            "
-        >
-            <span>Pontos: </span>
-            <span id="scoreEl">0</span>
-        </p>
-        <canvas></canvas>
+                top: 20%;
+                left: 20%;
+                transform: translate(-50% -50%);
+                font-size: 10px;
+              "
+              >Iniciar</span
+            >
+          </div>
+        </div>
+      </div>
+      <!--Fim startScreen-->
 
-        <div 
-            id="startScreen"    
-            style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            background: url('./img/startScreenBackground.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-            z-index: 20;
-        
-            "
-        >
-            <div style="text-align: center;">
-    <h1 style="color: azure;">Space Invaders</h1>
-    <div 
-        id="startButton"
-    style="position: relative; display: inline-block; cursor: pointer;"
-    >
-        <img src="./img/button.png" alt="Start Button" />
-        <span
-                style="
-                    position: absolute;
-                    color: azure;
-                    top: 20%;
-                    left: 20%;
-                    transform: translate(-50% -50%);
-                "
-        >Iniciar</span>
-    </div>
-            </div>
-        </div><!--Fim startScreen--> 
-
-        <div 
+      <div
         id="restartScreen"
         style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: url('./img/startScreenBackground.png');
-        z-index: 20;
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: url('./img/startScreenBackground.png');
+          z-index: 20;
+          background-size: contain;
+          background-repeat: no-repeat;
+          display: none;
+          align-items: center;
+          justify-content: center;
         "
-        >
-            <div style="text-align: center;">
-                    <h1 style="color: azure;">Game Over</h1>
-                        <div 
-                            id="restartButton"
-                             style="position: relative; display: inline-block; cursor: pointer;"
-                        >
-                            <img src="./img/button.png" alt="Restart Button" />
-                            <span
-                             style="
-                                position: absolute;
-                                color: azure;
-                                top: 25%;
-                                left: 15%;
-                                transform: translate(-50%-50%);
-                            "
-                            >Reiniciar</span>
-                        </div>
-            </div>
-
-        </div><!--FIM restartScreen-->
-    </div> <!--FIM id="parentDiv"-->
+      >
+        <div style="text-align: center">
+          <h1 style="color: azure">Game Over</h1>
+          <div
+            id="restartButton"
+            style="position: relative; display: inline-block; cursor: pointer"
+          >
+            <img src="./img/button.png" alt="Restart Button" />
+            <span
+              style="
+                position: absolute;
+                color: azure;
+                top: 25%;
+                left: 15%;
+                transform: translate(-50%-50%);
+                font-size: 10px;
+              "
+              >Reiniciar</span
+            >
+          </div>
+        </div>
+      </div>
+      <!--FIM restartScreen-->
+    </div>
+    <!--FIM id="parentDiv"-->
 
     <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm9
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"  
         integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
